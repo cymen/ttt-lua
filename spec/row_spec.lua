@@ -2,8 +2,6 @@ require "lib/row"
 
 describe("Row", function()
 
-  local row
-
   context("create", function()
     it("can be created", function()
       row = Row.create({})
@@ -25,4 +23,5 @@ describe("Row", function()
       assert_equal(row:__tostring(), "x, o, x")
     end)
   end)
+
 end)

@@ -3,8 +3,6 @@ require "lib/row"
 
 describe("Board", function()
 
-  local board
-
   context("create", function()
     it("can be created", function()
       board = Board.create({})
@@ -54,13 +52,4 @@ describe("Board", function()
     end)
   end)
 
-  context("rows", function()
-    it("returns a collection of rows", function()
-      board = Board.create({1, 2, 3, 4, 5, 6, 7, 8, 9})
-      rows = board:rows()
-      assert_equal(rows[1], Row.create({1, 2, 3}))
-      assert_equal(rows[2], Row.create({4, 5, 6}))
-      assert_equal(rows[3], Row.create({7, 8, 9}))
-    end)
-  end)
 end)
