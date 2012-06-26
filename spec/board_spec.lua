@@ -52,4 +52,11 @@ describe("Board", function()
     end)
   end)
 
+  context("rows", function()
+    it("returns the 8 rows", function()
+      board = Board.create()
+      assert_equal(#(board:rows()), 8)
+    end)
+  end)
+
 end)

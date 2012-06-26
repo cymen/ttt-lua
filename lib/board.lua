@@ -27,5 +27,7 @@ function Board:clear(index)
 end
 
 function Board:rows()
-  return Rows.create(self)
+  local rows = Rows.create(self)
+  rows:all()
+  return rows
 end
