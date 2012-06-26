@@ -19,6 +19,6 @@ function Board:set(index, value)
   table.insert(self.cells, index, value)
 end
 
-function Board:unset(index)
+function Board:clear(index)
   self:set(index, nil)
 end
