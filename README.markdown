@@ -30,3 +30,8 @@ Classes
 
 Lua does not have classes yet they can be added. I took the approach [described on the Lua wiki under Simple Lua Classes](http://lua-users.org/wiki/SimpleLuaClasses) using the simplest option that fulfilled the requirements. Calling class methods requires the use of `:` as in `classInstance:method_name()` which results in `self` working within the scope of `method_name()`. In short, a class is built upon a table.
 
+Operators
+---------
+
+* `..` string concatenation
+* '~=` not equal
