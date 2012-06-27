@@ -1,10 +1,9 @@
 require "lib/output"
 
-
 describe("Output", function()
 
   context("write", function()
-    it("can inject table for output instead of using system output", function()
+    it("writes to injected buffer", function()
       local buffer = {}
       local output = Output.create(buffer)
 

@@ -15,7 +15,7 @@ describe("Input", function()
   end)
 
   context("read number", function()
-    it("can inject table for input instead of using system input", function()
+    it("reads from injected buffer", function()
       table.insert(buffer, 42)
       assert_equal(input:read_number(), 42)
 
@@ -23,4 +23,5 @@ describe("Input", function()
       assert_equal(input:read_number(), 8)
     end)
   end)
+
 end)
