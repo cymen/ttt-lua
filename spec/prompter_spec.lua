@@ -63,18 +63,18 @@ describe("Prompter", function()
     end)
   end)
 
-  context("continue", function()
-    it("asks player if they would like to continue", function()
+  context("play_again", function()
+    it("asks player if they would like to play again", function()
       table.insert(buffer_input, 'n')
 
-      assert_equal(prompter:continue(), 'n')
-      assert_equal(buffer_output[1], "Continue (y/n)? ")
+      assert_equal(prompter:play_again(), 'n')
+      assert_equal(buffer_output[1], "Play again (y/n)? ")
     end)
 
     it("is case insensitive", function()
       table.insert(buffer_input, 'N')
       
-      assert_equal(prompter:continue(), 'n')
+      assert_equal(prompter:play_again(), 'n')
     end)
 
     it("continues to prompt until correct answer given", function()
@@ -83,7 +83,7 @@ describe("Prompter", function()
       table.insert(buffer_input, '?')
       table.insert(buffer_input, 'N')
       
-      assert_equal(prompter:continue(), 'n')
+      assert_equal(prompter:play_again(), 'n')
     end)
   end)
 

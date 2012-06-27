@@ -48,9 +48,9 @@ function Prompter:int_in_list(list)
   end
 end
 
-function Prompter:continue()
+function Prompter:play_again()
   while true do
-    self.output:write("Continue (y/n)? ")
+    self.output:write("Play again (y/n)? ")
     answer = self.input:read_line()
     answer = answer:lower()
 
