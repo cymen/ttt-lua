@@ -1,3 +1,4 @@
+require "lib/constants"
 require "lib/rows"
 
 Board = {}
@@ -10,7 +11,6 @@ function Board.create(cells)
   if( board.cells == nil )
     then board.cells = {}
   end
-  board.side_length = 3
   return board
 end
 
@@ -19,7 +19,7 @@ function Board:get(index)
 end
 
 function Board:set(index, value)
-  table.insert(self.cells, index, value)
+  self.cells[index] = value
 end
 
 function Board:clear(index)
@@ -27,7 +27,17 @@ function Board:clear(index)
 end
 
 function Board:rows()
-  local rows = Rows.create(self)
-  rows:all()
+  local rows = Rows.create()
+  rows:all(self)
   return rows
+end
+
+function Board:empty_count()
+  local count = 0
+  for i = 1,CELL_COUNT do
+    if self.cells[i] == nil then
+      count = count + 1
+    end
+  end
+  return count
 end
