@@ -47,3 +47,15 @@ function Prompter:int_in_list(list)
     end
   end
 end
+
+function Prompter:continue()
+  while true do
+    self.output:write("Continue (y/n)? ")
+    answer = self.input:read_line()
+    answer = answer:lower()
+
+    if answer == 'y' or answer == 'n' then
+      return answer
+    end
+  end
+end

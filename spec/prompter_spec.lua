@@ -23,12 +23,14 @@ describe("Prompter", function()
   context("x_or_o", function()
     it("asks if player wants to be x or o", function()
       table.insert(buffer_input, "x")
+
       assert_equal(prompter:x_or_o(), "x")
       assert_equal(buffer_output[1], "Would you like to be x or o (x always goes first)? ")
     end)
 
     it("is case-insensitive to answer", function()
       table.insert(buffer_input, "X")
+
       assert_equal(prompter:x_or_o(), "x")
     end)
 
@@ -36,6 +38,7 @@ describe("Prompter", function()
       table.insert(buffer_input, "z")
       table.insert(buffer_input, "q")
       table.insert(buffer_input, "o")
+
       assert_equal(prompter:x_or_o(), "o")
     end)
   end)
@@ -55,7 +58,32 @@ describe("Prompter", function()
       table.insert(buffer_input, 10)
       table.insert(buffer_input, 42)
       table.insert(buffer_input, 3)
+
       assert_equal(prompter:int_in_list(list), 3)
+    end)
+  end)
+
+  context("continue", function()
+    it("asks player if they would like to continue", function()
+      table.insert(buffer_input, 'n')
+
+      assert_equal(prompter:continue(), 'n')
+      assert_equal(buffer_output[1], "Continue (y/n)? ")
+    end)
+
+    it("is case insensitive", function()
+      table.insert(buffer_input, 'N')
+      
+      assert_equal(prompter:continue(), 'n')
+    end)
+
+    it("continues to prompt until correct answer given", function()
+      table.insert(buffer_input, 'z')
+      table.insert(buffer_input, 'q')
+      table.insert(buffer_input, '?')
+      table.insert(buffer_input, 'N')
+      
+      assert_equal(prompter:continue(), 'n')
     end)
   end)
 
