@@ -51,6 +51,7 @@ describe("Scorer", function()
       assert_true(scorer:is_over())
     end)
   end)
+
   context("won game", function()
     local board = Board.create({ 'x', 'o', nil,
                                  nil, 'x', 'o',

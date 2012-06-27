@@ -28,4 +28,4 @@ The manual has this to say about tables:
 Scope
 -----
 
-Variables are global unless the keyword `local` is used or they are within a block expression (such as the `i` varible in `for i = 1, 10 do ... end`).
+Variables are global unless the keyword `local` is used or they are within a block expression (such as the `i` variable in `for i = 1, 10 do ... end`).
