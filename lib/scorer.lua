@@ -34,14 +34,23 @@ function Scorer:is_tie()
   return self.board:empty_count() == 0
 end
 
-function Scorer:is_won()
+function Scorer:winner()
   for key, row in pairs(self.board:rows()) do
     if row:identical_values_and_not_nil() then
-      return true
+      return row[1]
     end
   end
 
-  return false
+  return nil
+end
+
+function Scorer:is_won()
+  local winner = self:winner()
+  if winner ~= nil then
+    return true
+  else
+    return false
+  end
 end
 
 function Scorer:is_over()

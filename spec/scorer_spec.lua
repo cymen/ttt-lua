@@ -57,10 +57,11 @@ describe("Scorer", function()
                                  nil, nil, 'x'})
     local scorer = Scorer.create(board)
 
-    it("is won and over but not tied", function()
-      assert_false(scorer:is_tie())
+    it("is won by 'x' and over but not tied", function()
       assert_true(scorer:is_won())
+      assert_equal(scorer:winner(), 'x')
       assert_true(scorer:is_over())
+      assert_false(scorer:is_tie())
     end)
   end)
 
