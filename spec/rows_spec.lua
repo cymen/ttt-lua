@@ -1,12 +1,13 @@
 require "lib/row"
 require "lib/rows"
 require "lib/board"
+require "lib/constants"
 
 describe("Rows", function()
 
   local board = Board.create({ 'x', 'o', 'x',
                                'x', 'o', 'x',
-                               'o', 'x', 'o'})
+                               'o', 'x', 'o' })
 
   context("create", function()
     it("can be created", function()
