@@ -11,6 +11,21 @@ describe("Scorer", function()
     end)
   end)
 
+
+  context("turn", function()
+    local board = Board.create()
+    local scorer = Scorer.create(board)
+
+    it("is x for an empty board", function()
+      assert_equal('x', scorer:turn())
+    end)
+
+    it("is o when x has played once", function()
+      board:set(1, 'x')
+      assert_equal('o', scorer:turn())
+    end)
+  end)
+
   context("incomplete unwon game", function()
     local board = Board.create({ 'x', 'o', 'x',
                                  'x', 'o', 'x',

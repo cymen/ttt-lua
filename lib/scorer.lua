@@ -11,6 +11,25 @@ function Scorer.create(board)
   return scorer
 end
 
+function Scorer:turn()
+  local x_count = 0
+  local o_count = 0
+
+  for _, value in pairs(self.board.cells) do
+    if value == 'x' then
+      x_count = x_count + 1
+    elseif value == 'o' then
+      o_count = o_count + 1
+    end
+  end
+
+  if x_count == o_count then
+    return 'x'
+  else
+    return 'o'
+  end
+end
+
 function Scorer:is_tie()
   return self.board:empty_count() == 0
 end
