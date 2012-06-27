@@ -34,4 +34,4 @@ Operators
 ---------
 
 * `..` string concatenation
-* '~=` not equal
+* `~=` not equal
