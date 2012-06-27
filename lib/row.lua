@@ -15,7 +15,7 @@ function Row:identical_values_and_not_nil()
     return false
   end
 
-  for i = 1,ROW_LENGTH do
+  for i = 1, ROW_LENGTH do
     if self[i] ~= temp then
       return false
     end
@@ -34,5 +34,13 @@ function Row:__eq(other)
 end
 
 function Row:__tostring()
-  return table.concat(self, ", ")
+  local output = {}
+  for i = 1, ROW_LENGTH do
+    if self[i] == nil then
+      output[i] = "_"
+    else
+      output[i] = self[i]
+    end
+  end
+  return table.concat(output, ", ")
 end

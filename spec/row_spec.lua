@@ -17,13 +17,21 @@ describe("Row", function()
       assert_false(row:identical_values_and_not_nil())
     end)
 
-    it("returns false for 'x', 'o', 'x'", function()
-      local row = Row.create({'x', 'o', 'x'})
+    context("returns false for rows with", function()
+      it("multiple values", function()
+        local row = Row.create({'x', 'o', 'x'})
 
-      assert_false(row:identical_values_and_not_nil())
+        assert_false(row:identical_values_and_not_nil())
+      end)
+
+      it("two identical and an implicit nil", function()
+        local row = Row.create({'x', 'x'})
+
+        assert_false(row:identical_values_and_not_nil())
+      end)
     end)
 
-    it("returns true for 'x', 'x', 'x'", function()
+    it("returns true for identical row of non-nil", function()
       local row = Row.create({'x', 'x', 'x'})
 
       assert_true(row:identical_values_and_not_nil())
@@ -43,8 +51,22 @@ describe("Row", function()
   context("tostring", function()
     it("prints nicely as 'value_1, value_2, value_3'", function()
       local row = Row.create({'x', 'o', 'x'})
-
+      
       assert_equal(row:__tostring(), "x, o, x")
+    end)
+
+    context("handles nils", function()
+      it("prints implict nil as underscore", function()
+        local row = Row.create({'x', 'x'})
+
+        assert_equal(row:__tostring(), 'x, x, _')
+      end)
+
+      it("prints explicit nil as underscore", function()
+        local row = Row.create({nil, 'o', 'x'})
+
+        assert_equal(row:__tostring(), '_, o, x')
+      end)
     end)
   end)
 
