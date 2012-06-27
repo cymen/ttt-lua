@@ -2,12 +2,20 @@ require "lib/constants"
 
 describe("constants", function()
 
-  it("has SIDE_LENGTH", function()
-    assert_equal(ROW_LENGTH, 3)
+  context("row", function()
+    it("has ROW_LENGTH", function()
+      assert_equal(ROW_LENGTH, 3)
+    end)
+    
+    it("has ROW_COUNT", function()
+      assert_equal(ROW_COUNT, 8)
+    end)
   end)
 
-  it("has CELL_COUNT", function()
-    assert_equal(CELL_COUNT, 9)
+  context("cell", function()
+    it("has CELL_COUNT", function()
+      assert_equal(CELL_COUNT, 9)
+    end)
   end)
 
 end)
