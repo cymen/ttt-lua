@@ -38,12 +38,18 @@ function Board:horizontal_rows()
   return rows
 end
 
-function Board:empty_count()
-  local count = 0
+function Board:empty_cell_numbers()
+  local numbers = {}
+
   for i = 1,CELL_COUNT do
     if self.cells[i] == nil then
-      count = count + 1
+      table.insert(numbers, i)
     end
   end
-  return count
+
+  return numbers
+end
+
+function Board:empty_count()
+  return #(self:empty_cell_numbers())
 end

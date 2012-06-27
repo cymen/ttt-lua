@@ -91,6 +91,23 @@ describe("Board", function()
   end)
 
 
+  context("empty_cell_numbers", function()
+    it("returns all cell numbers on an empty board", function()
+      local board = Board.create()
+
+      assert_equal(#(board:empty_cell_numbers()), 9)
+    end)
+
+    it("if a cell is played it is not in the empty list", function()
+      local board = Board.create({'x'})
+
+      assert_equal(#(board:empty_cell_numbers()), 8)
+      for _, number in pairs(board:empty_cell_numbers()) do
+        assert_not_equal(number, 1)
+      end
+    end)
+  end)
+
   context("empty_count", function()
     it("sees all cells as empty on an unplayed board", function()
       local board = Board.create()

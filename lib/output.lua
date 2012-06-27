@@ -8,10 +8,12 @@ function Output.create(buffer)
   return output
 end
 
-function Output:write(value)
-  if self.buffer then
-    table.insert(self.buffer, value)
-  else
-    io.write(value)
+function Output:write(...)
+  for _, value in ipairs(arg) do
+    if self.buffer then
+      table.insert(self.buffer, value)
+    else
+      io.write(value)
+    end
   end
 end
