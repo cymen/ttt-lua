@@ -5,12 +5,15 @@ function Input.create(buffer)
   local input = {}
   setmetatable(input, Input)
   input.buffer = buffer
+  input.buffer_index = 1
   return input
 end
 
 function Input:read_line()
   if self.buffer then
-    return self.buffer[#(self.buffer)]
+    local read = self.buffer[self.buffer_index]
+    self.buffer_index = self.buffer_index + 1
+    return read
   else
     return io.read("*line")
   end

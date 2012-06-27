@@ -1,8 +1,12 @@
 require "lib/input"
 
 describe("Input", function()
-  local buffer = {}
-  local input = Input.create(buffer)
+  local buffer, input
+
+  before(function()
+    buffer = {}
+    input = Input.create(buffer)
+  end)
 
   context("read_line", function()
     it("reads from injected buffer", function()
@@ -11,6 +15,22 @@ describe("Input", function()
 
       table.insert(buffer, "Another line of input.")
       assert_equal(input:read_line(), "Another line of input.")
+    end)
+
+    it("reads lines from beginning to end of injected buffer", function()
+      table.insert(buffer, "line #1")
+      table.insert(buffer, "line #2")
+      table.insert(buffer, "line #3")
+
+      assert_equal(input:read_line(), "line #1")
+      assert_equal(input:read_line(), "line #2")
+      assert_equal(input:read_line(), "line #3")
+    end)
+
+    it("read returns nil when end of injected buffer reached", function()
+      table.insert(buffer, "The Mole had been working very hard all the morning...")
+      assert_equal(input:read_line(), "The Mole had been working very hard all the morning...")
+      assert_equal(input:read_line(), nil) 
     end)
   end)
 
