@@ -32,6 +32,12 @@ function Board:rows()
   return rows
 end
 
+function Board:horizontal_rows()
+  local rows = Rows.create()
+  rows:horizontal(self)
+  return rows
+end
+
 function Board:empty_count()
   local count = 0
   for i = 1,CELL_COUNT do

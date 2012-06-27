@@ -77,6 +77,20 @@ describe("Board", function()
     end)
   end)
 
+
+  context("horizontal_rows", function()
+    it("returns the horizontal rows", function()
+      local board = Board.create({'x', nil, nil, 'o', nil, nil, nil, nil, 'x'})
+      local rows = board:horizontal_rows()
+
+      assert_equal(#(rows), 3)
+      assert_equal(rows[1], Row.create({'x', nil, nil}))
+      assert_equal(rows[2], Row.create({'o', nil, nil}))
+      assert_equal(rows[3], Row.create({nil, nil, 'x'}))
+    end)
+  end)
+
+
   context("empty_count", function()
     it("sees all cells as empty on an unplayed board", function()
       local board = Board.create()
