@@ -77,4 +77,20 @@ describe("Board", function()
     end)
   end)
 
+  context("empty_count", function()
+    it("sees all cells as empty on an unplayed board", function()
+      local board = Board.create()
+
+      assert_equal(board:empty_count(), 9)
+    end)
+
+    it("sees no cells as empty on a fully-played board", function()
+      local board = Board.create({ 'o', 'o', 'o',
+                                   'x', 'x', 'x',
+                                   'o', 'o', 'o'})
+
+      assert_equal(board:empty_count(), 0)
+    end)
+  end)
+
 end)
