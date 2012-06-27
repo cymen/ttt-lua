@@ -11,17 +11,16 @@ describe("Prompter", function()
     end)
   end)
 
+  local buffer_output, buffer_input, output, input, prompter
+  before(function()
+    buffer_output = {}
+    buffer_input = {}
+    output = Output.create(buffer_output)
+    input = Input.create(buffer_input)
+    prompter = Prompter.create(output, input)
+  end)
 
   context("x_or_o", function()
-    local buffer_output, buffer_input, output, input, prompter
-    before(function()
-      buffer_output = {}
-      buffer_input = {}
-      output = Output.create(buffer_output)
-      input = Input.create(buffer_input)
-      prompter = Prompter.create(output, input)
-    end)
-
     it("asks if player wants to be x or o", function()
       table.insert(buffer_input, "x")
       assert_equal(prompter:x_or_o(), "x")
@@ -38,6 +37,25 @@ describe("Prompter", function()
       table.insert(buffer_input, "q")
       table.insert(buffer_input, "o")
       assert_equal(prompter:x_or_o(), "o")
+    end)
+  end)
+
+  context("int_in_list", function()
+    it("asks player to choose an integer from a supplied list", function()
+      local list = {1, 2, 3}
+      table.insert(buffer_input, 2)
+
+      assert_equal(prompter:int_in_list(list), 2)
+      assert_equal(buffer_output[1], "Choose a space from 1, 2, 3: ")
+    end)
+
+    it("continues to ask until an integer in the list is given", function()
+      local list = {1, 2, 3}
+      table.insert(buffer_input, 0)
+      table.insert(buffer_input, 10)
+      table.insert(buffer_input, 42)
+      table.insert(buffer_input, 3)
+      assert_equal(prompter:int_in_list(list), 3)
     end)
   end)
 

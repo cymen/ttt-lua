@@ -31,3 +31,19 @@ function Prompter:x_or_o()
     end
   end
 end
+
+function Prompter:int_in_list(list)
+  local prompt = "Choose a space from " .. table.concat(list, ", ") .. ": "
+  local valid_answers = {}
+  for _, value in pairs(list) do
+    valid_answers[value] = true
+  end
+
+  while true do
+    self.output:write(prompt)
+    answer = self.input:read_line()
+    if valid_answers[answer] then
+      return answer
+    end
+  end
+end
