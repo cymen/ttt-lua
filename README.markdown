@@ -35,3 +35,8 @@ Operators
 
 * `..` string concatenation
 * `~=` not equal
+
+Method names
+------------
+
+It is not allowed to have `?` in a method name such as `play_again?`.
