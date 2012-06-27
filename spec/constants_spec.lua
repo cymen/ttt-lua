@@ -1,6 +1,6 @@
 require "lib/constants"
 
-describe("constants", function()
+describe("Constants", function()
 
   context("row", function()
     it("has ROW_LENGTH", function()
