@@ -8,10 +8,9 @@ function BoardPrinter.create(output)
   local printer = {}
   setmetatable(printer, BoardPrinter)
   if output == nil then
-    printer.output = Output.create()
-  else
-    printer.output = output
+    output = Output.create()
   end
+  printer.output = output
   return printer
 end
 
