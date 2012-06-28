@@ -2,13 +2,17 @@ require "lib/game_loop"
 require "lib/player_next_empty"
 
 describe("GameLoop", function()
-  local board = Board.create()
-  local player_x = PlayerNextEmpty.create()
-  local player_o = PlayerNextEmpty.create()
+  local board, player_x, player_o, loop
+
+  before(function()
+    board = Board.create()
+    player_x = PlayerNextEmpty.create()
+    player_o = PlayerNextEmpty.create()
+    loop = GameLoop.create(board, player_x, player_o)
+  end)
 
   context("create", function()
     it("can be created", function()
-      loop = GameLoop.create(board, player_x, player_o)
       assert_not_equal(loop, nil)
     end)
   end)
@@ -16,8 +20,8 @@ describe("GameLoop", function()
 
   context("run", function()
     it("x wins with two dumb players", function()
-      loop = GameLoop.create(board, player_x, player_o)
       loop:run()
+
       assert_equal(loop.scorer:winner(), 'x')
     end)
   end)
