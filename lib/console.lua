@@ -42,8 +42,7 @@ function Console:game()
       loop = GameLoop.create(board, computer, human)
     end
 
-    loop:run()
-    self.winner = loop.winner
+    self.winner = loop:run()
 
     if self.prompter:play_again() == 'n' then
       return

@@ -20,9 +20,9 @@ describe("GameLoop", function()
 
   context("run", function()
     it("x wins with two dumb players", function()
-      loop:run()
+      local winner = loop:run()
 
-      assert_equal(loop.winner, 'x')
+      assert_equal(winner, 'x')
     end)
   end)
 
