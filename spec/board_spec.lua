@@ -69,6 +69,19 @@ describe("Board", function()
     end)
   end)
 
+  context("clear", function()
+    it("sets a cell back to nil", function()
+      local board = Board.create({'x'})
+
+      assert_equal(board:get(1), 'x')
+
+      board:clear(1)
+
+      assert_equal(board:get(1), nil)
+    end)
+  end)
+
+
   context("rows", function()
     it("returns the 8 rows", function()
       local board = Board.create()

@@ -25,6 +25,11 @@ function Board:set(index, value)
   self.cells[index] = value
 end
 
+
+function Board:clear(index)
+  self.cells[index] = nil
+end
+
 function Board:rows()
   local rows = Rows.create()
   rows:all(self)
