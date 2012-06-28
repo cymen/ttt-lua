@@ -22,7 +22,7 @@ describe("GameLoop", function()
     it("x wins with two dumb players", function()
       loop:run()
 
-      assert_equal(loop.scorer:winner(), 'x')
+      assert_equal(loop.winner, 'x')
     end)
   end)
 
