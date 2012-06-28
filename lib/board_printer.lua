@@ -17,6 +17,6 @@ end
 function BoardPrinter:print(board)
   local rows = board:horizontal_rows()
   for _, row in pairs(rows) do
-    self.output:write(row:__tostring(), "\n")
+    self.output:write(tostring(row) .. "\n")
   end
 end

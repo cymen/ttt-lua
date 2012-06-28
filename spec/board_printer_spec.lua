@@ -22,11 +22,9 @@ describe("BoardPrinter", function()
       
       printer:print(board)
 
-      assert_equal(buffer[1], 'x, o, x')
-      assert_equal(buffer[2], "\n")
-      assert_equal(buffer[3], 'o, x, o')
-      assert_equal(buffer[4], "\n")
-      assert_equal(buffer[5], 'x, o, x')
+      assert_equal(buffer[1], 'x, o, x\n')
+      assert_equal(buffer[2], 'o, x, o\n')
+      assert_equal(buffer[3], 'x, o, x\n')
     end)
   end)
 
