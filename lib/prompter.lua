@@ -7,16 +7,14 @@ Prompter.__index = Prompter
 function Prompter.create(output, input)
   prompter = {}
   setmetatable(prompter, Prompter)
-  if output ~= nil then
-    prompter.output = output
-  else
-    prompter.output = Output.create()
+  if output == nil then
+    output = Output.create()
   end
-  if input ~= nil then
-    prompter.input = input
-  else
-    prompter.input = Input.create()
+  prompter.output = output
+  if input == nil then
+    input = Input.create()
   end
+  prompter.input = input
   return prompter
 end
 
