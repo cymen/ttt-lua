@@ -40,6 +40,7 @@ function Prompter:int_in_list(list)
   while true do
     self.output:write(prompt)
     answer = self.input:read_line()
+    answer = tonumber(answer)
     if valid_answers[answer] then
       return answer
     end
