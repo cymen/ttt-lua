@@ -14,13 +14,7 @@ Assumptions
 ===========
 
 * 3x3 board
-* cells number 1-9 like so:
-
-    1 2 3
-
-    4 5 6
-
-    7 8 9
+* cells are numbered 1-9 starting at upper left and ending at lower right
 
 Notes on Lua
 ============

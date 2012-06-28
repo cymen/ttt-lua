@@ -11,6 +11,8 @@ describe("PlayerNextEmpty", function()
   end)
 
   context("play", function()
+    it("plays the next empty cell", function()
+    end)
   end)
 
   context("get_next_empty_cell", function()
