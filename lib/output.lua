@@ -12,13 +12,11 @@ function Output.create(buffer, width)
   return output
 end
 
-function Output:write(...)
-  for _, value in ipairs(arg) do
-    if self.buffer then
-      table.insert(self.buffer, value)
-    else
-      io.write(value)
-    end
+function Output:write(value)
+  if self.buffer ~= nil then
+    table.insert(self.buffer, value)
+  else
+    io.write(value)
   end
 end
 
@@ -31,5 +29,5 @@ function Output:write_line_centered(value, width)
   length = #(value)
   padding = (width - length) / 2
 
-  self:write(string.rep(" ", padding) .. value, "\n")
+  self:write(string.rep(" ", padding) .. value .. '\n')
 end
