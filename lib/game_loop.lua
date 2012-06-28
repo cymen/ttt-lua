@@ -13,6 +13,9 @@ function GameLoop.create(board, player_x, player_o)
   return loop
 end
 
+function GameLoop:pre_game()
+end
+
 function GameLoop:run()
   while not self.scorer:is_over() do
     if self.scorer:turn() == 'x' then
@@ -23,4 +26,7 @@ function GameLoop:run()
       self.board:set(choice, 'o')
     end
   end
+end
+
+function GameLoop:post_game()
 end

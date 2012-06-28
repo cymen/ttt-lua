@@ -1,5 +1,3 @@
-require "lib/constants"
-
 Row = {}
 Row.__index = Row
 
@@ -15,7 +13,7 @@ function Row:identical_values_and_not_nil()
     return false
   end
 
-  for i = 1, ROW_LENGTH do
+  for i = 1,3 do
     if self[i] ~= temp then
       return false
     end
@@ -35,7 +33,7 @@ end
 
 function Row:__tostring()
   local output = {}
-  for i = 1, ROW_LENGTH do
+  for i = 1,3 do
     if self[i] == nil then
       output[i] = "_"
     else

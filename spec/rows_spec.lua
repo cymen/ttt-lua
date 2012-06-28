@@ -1,7 +1,6 @@
 require "lib/row"
 require "lib/rows"
 require "lib/board"
-require "lib/constants"
 
 describe("Rows", function()
 

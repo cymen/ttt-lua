@@ -1,4 +1,3 @@
-require "lib/constants"
 require "lib/rows"
 
 Board = {}
@@ -41,7 +40,7 @@ end
 function Board:empty_cell_numbers()
   local numbers = {}
 
-  for i = 1,CELL_COUNT do
+  for i = 1,9 do
     if self.cells[i] == nil then
       table.insert(numbers, i)
     end
