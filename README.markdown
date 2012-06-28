@@ -35,6 +35,7 @@ Operators
 
 * `..` string concatenation
 * `~=` not equal
+* `==` compares by type first so `"1" == 1` is false
 * `...` when used as an argument parameter in method/function definition indicates an arbigration number of arguments can be passed and will be present within the method/function scope as the variable `arg`.
 
 Method names
