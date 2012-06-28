@@ -9,18 +9,16 @@ PlayerHuman.__index = PlayerHuman
 function PlayerHuman.create(output, input)
   player = {}
   setmetatable(player, PlayerHuman)
-  if output ~= nil then
-    player.output = output
-  else
-    player.output = Output.create()
+  if output == nil then
+    output = Output.create()
   end
-  if input ~= nil then
-    player.input = input
-  else
-    player.input = Input.create()
+  player.output = output
+  if input == nil then
+    input = Input.create()
   end
-  player.prompter = Prompter.create(player.output, player.input)
-  player.board_printer = BoardPrinter.create(player.output)
+  player.input = input
+  player.prompter = Prompter.create(output, input)
+  player.board_printer = BoardPrinter.create(output)
   return player
 end
 
