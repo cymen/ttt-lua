@@ -6,7 +6,7 @@ describe("BoardPrinter", function()
 
   context("create", function()
     it("can be created", function()
-      local printer = BoardPrinter.create(Board.create())
+      local printer = BoardPrinter.create()
       assert_not_equal(printer, nil)
     end)
   end)
@@ -18,8 +18,10 @@ describe("BoardPrinter", function()
       local board = Board.create({  'x','o','x',
                                     'o','x','o',
                                     'x','o','x'  })
-      local printer = BoardPrinter.create(board, output)
-      printer:print()
+      local printer = BoardPrinter.create(output)
+      
+      printer:print(board)
+
       assert_equal(buffer[1], 'x, o, x')
       assert_equal(buffer[2], "\n")
       assert_equal(buffer[3], 'o, x, o')

@@ -4,10 +4,9 @@ require "lib/output"
 BoardPrinter = {}
 BoardPrinter.__index = BoardPrinter
 
-function BoardPrinter.create(board, output)
+function BoardPrinter.create(output)
   local printer = {}
   setmetatable(printer, BoardPrinter)
-  printer.board = board
   if output == nil then
     printer.output = Output.create()
   else
@@ -16,8 +15,8 @@ function BoardPrinter.create(board, output)
   return printer
 end
 
-function BoardPrinter:print()
-  local rows = self.board:horizontal_rows()
+function BoardPrinter:print(board)
+  local rows = board:horizontal_rows()
   for _, row in pairs(rows) do
     self.output:write(row:__tostring(), "\n")
   end
