@@ -14,6 +14,7 @@ function GameLoop.create(board, player_x, player_o)
 end
 
 function GameLoop:run()
+  loop.winner = nil
   while not self.scorer:is_over() do
     if self.scorer:turn() == 'x' then
       local choice = self.player_x:play(self.board)
@@ -23,4 +24,5 @@ function GameLoop:run()
       self.board:set(choice, 'o')
     end
   end
+  loop.winner = self.scorer:winner()
 end
