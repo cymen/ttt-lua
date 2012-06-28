@@ -7,6 +7,8 @@ describe("Scorer", function()
     it("can create a scorer with board reference", function()
       local board = Board.create()
       local scorer = Scorer.create(board)
+
+      assert_not_equal(scorer, nil)
       assert_equal(scorer.board, board)
     end)
   end)
@@ -22,6 +24,7 @@ describe("Scorer", function()
 
     it("is o when x has played once", function()
       board:set(1, 'x')
+
       assert_equal('o', scorer:turn())
     end)
   end)
