@@ -7,9 +7,10 @@ function Board.create(cells)
   local board = {}
   setmetatable(board, Board)
   board.cells = cells
-  if( board.cells == nil )
-    then board.cells = {}
+  if cells == nil then
+    cells = {}
   end
+  board.cells = cells
   return board
 end
 
