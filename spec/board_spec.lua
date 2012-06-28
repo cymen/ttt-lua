@@ -50,22 +50,22 @@ describe("Board", function()
       assert_equal(board:get(1), 'x')
       assert_equal(board:empty_count(), 8)
     end)
-  end)
 
-  context("clear", function()
-    it("clears a cell value by index", function()
-      local board = Board.create({})
+    it("throws an error if attempt to set a cell that already has a value", function()
+      local board = Board.create({'x'})
 
-      assert_equal(board:get(1), nil)
-      assert_equal(board:empty_count(), 9)
+      function fn()
+        board:set(1, 'o')
+      end
+
+      function error_handler(e)
+        return e
+      end
+
+      local success, _error = xpcall(fn, error_handler)
       
-      board:set(1, 'x')
-      assert_equal(board:get(1), 'x')
-      assert_equal(board:empty_count(), 8)
-
-      board:clear(1)
-      assert_equal(board:get(1), nil)
-      assert_equal(board:empty_count(), 9)
+      assert_equal(success, false)
+      assert_not_equal(_error:find("Attempt to set cell 1 to o but it is already x"), nil)
     end)
   end)
 

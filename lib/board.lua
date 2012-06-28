@@ -19,11 +19,10 @@ function Board:get(index)
 end
 
 function Board:set(index, value)
+  if self.cells[index] ~= nil then
+    error("Attempt to set cell " .. index .. " to " .. value .. " but it is already " .. self.cells[index])
+  end
   self.cells[index] = value
-end
-
-function Board:clear(index)
-  self:set(index, nil)
 end
 
 function Board:rows()
