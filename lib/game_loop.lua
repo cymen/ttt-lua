@@ -4,7 +4,7 @@ GameLoop = {}
 GameLoop.__index = GameLoop
 
 function GameLoop.create(board, player_x, player_o)
-  loop = {}
+  local loop = {}
   setmetatable(loop, GameLoop)
   loop.scorer = Scorer.create(board)
   loop.board = board

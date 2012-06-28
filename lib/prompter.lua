@@ -5,7 +5,7 @@ Prompter = {}
 Prompter.__index = Prompter
 
 function Prompter.create(output, input)
-  prompter = {}
+  local prompter = {}
   setmetatable(prompter, Prompter)
   if output == nil then
     output = Output.create()

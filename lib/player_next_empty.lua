@@ -2,7 +2,7 @@ PlayerNextEmpty = {}
 PlayerNextEmpty.__index = PlayerNextEmpty
 
 function PlayerNextEmpty.create()
-  pne = {}
+  local pne = {}
   setmetatable(pne, PlayerNextEmpty)
   return pne
 end

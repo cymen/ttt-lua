@@ -7,7 +7,7 @@ PlayerHuman = {}
 PlayerHuman.__index = PlayerHuman
 
 function PlayerHuman.create(output, input)
-  player = {}
+  local player = {}
   setmetatable(player, PlayerHuman)
   if output == nil then
     output = Output.create()

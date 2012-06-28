@@ -9,7 +9,7 @@ Console = {}
 Console.__index = Console
 
 function Console.create(output, input)
-  console = {}
+  local console = {}
   setmetatable(console, Console)
   if output == nil then
     output = Output.create()
