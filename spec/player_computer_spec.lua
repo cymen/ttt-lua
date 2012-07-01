@@ -1,6 +1,6 @@
-require "lib/player_computer"
+require "lib/player/player_computer"
 require "lib/board"
-require "lib/player_next_empty"
+require "lib/player/player_next_empty"
 
 describe("PlayerComputer", function()
   local pc

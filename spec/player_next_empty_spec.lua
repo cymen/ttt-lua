@@ -1,4 +1,4 @@
-require "lib/player_next_empty"
+require "lib/player/player_next_empty"
 require "lib/board"
 
 describe("PlayerNextEmpty", function()

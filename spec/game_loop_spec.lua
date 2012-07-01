@@ -1,5 +1,5 @@
 require "lib/game_loop"
-require "lib/player_next_empty"
+require "lib/player/player_next_empty"
 
 describe("GameLoop", function()
   local board, player_x, player_o, loop

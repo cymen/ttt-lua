@@ -1,4 +1,4 @@
-require "lib/player_human"
+require "lib/player/player_human"
 require "lib/io/output"
 require "lib/io/input"
 require "lib/board"

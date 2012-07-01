@@ -2,7 +2,7 @@ require "lib/console"
 require "lib/io/output"
 require "lib/io/input"
 require "lib/board"
-require "lib/player_next_empty"
+require "lib/player/player_next_empty"
 
 describe("Console", function()
   local output_buffer, input_buffer, output, input, board
