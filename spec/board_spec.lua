@@ -54,18 +54,7 @@ describe("Board", function()
     it("throws an error if attempt to set a cell that already has a value", function()
       local board = Board.create({'x'})
 
-      function fn()
-        board:set(1, 'o')
-      end
-
-      function error_handler(e)
-        return e
-      end
-
-      local success, _error = xpcall(fn, error_handler)
-      
-      assert_equal(success, false)
-      assert_not_equal(_error:find("Attempt to set cell 1 to o but it is already x"), nil)
+      assert_error(function() board:set(1, 'o') end)
     end)
   end)
 
@@ -127,6 +116,14 @@ describe("Board", function()
 
       assert_equal(board:empty_count(), 9)
     end)
+ 
+    it("sees cells empty as expected on partially-played board", function()
+      local board = Board.create({ 'o', nil, 'o',
+                                   'x', nil, nil,
+                                   'o', nil, 'o'})
+
+      assert_equal(board:empty_count(), 4)
+    end)
 
     it("sees no cells as empty on a fully-played board", function()
       local board = Board.create({ 'o', 'o', 'o',
@@ -134,6 +131,41 @@ describe("Board", function()
                                    'o', 'o', 'o'})
 
       assert_equal(board:empty_count(), 0)
+    end)
+  end)
+
+  context("used_count", function()
+    it("sees no cells as used on an empty board", function()
+      local board = Board.create()
+
+      assert_equal(board:used_count(), 0)
+    end)
+    
+    it("sees cells used as expected on partially-played board", function()
+      local board = Board.create({ 'o', nil, 'o',
+                                   'x', nil, nil,
+                                   'o', nil, 'o'})
+
+      assert_equal(board:used_count(), 5)
+    end)
+
+    it("sees all cells as used on a fully-played board", function()
+      local board = Board.create({ 'o', 'o', 'o',
+                                   'x', 'x', 'x',
+                                   'o', 'o', 'o'})
+
+      assert_equal(board:used_count(), 9)
+    end)
+  end)
+
+  context("is_empty", function()
+    it("determines if board is empty", function()
+      local board = Board.create()
+
+      assert_true(board:is_empty())
+
+      board:set(1, 'x')
+      assert_false(board:is_empty())
     end)
   end)
 

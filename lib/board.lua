@@ -57,3 +57,11 @@ end
 function Board:empty_count()
   return #(self:empty_cell_numbers())
 end
+
+function Board:used_count()
+  return 9 - self:empty_count()
+end
+
+function Board:is_empty()
+  return #(self:empty_cell_numbers()) == 9
+end
