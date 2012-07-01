@@ -1,5 +1,6 @@
 require "lib/negamax"
 require "lib/board"
+require "spec/spec_helper"
 
 describe("Negamax", function()
   local negamax
