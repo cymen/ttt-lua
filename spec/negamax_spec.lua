@@ -47,24 +47,6 @@ describe("Negamax", function()
     end)
   end)
 
-  context("run", function()
-    it("weights the odd cells as equally optimal on an empty board", function()
-      local board = Board.create()
-      local weighted_choices = Negamax.run(board)
-
-      assert_have_optimal_moves_of(weighted_choices, {1, 3, 5, 7, 9})
-    end)
-
-    it("blocks a winning move of the opponent", function()
-      local board = Board.create({ 'x', nil, 'x',
-                                   nil, nil, nil,
-                                   nil, nil, 'o' })
-      local weighted_choices = Negamax.run(board)
-
-      assert_have_optimal_move_of(weighted_choices, 2)
-    end)
-  end)
-
   context("analysis", function()
     it("analyzes a tied game", function()
       local board = Board.create({ 'x', 'o', 'x',
@@ -72,6 +54,69 @@ describe("Negamax", function()
                                    'o', 'x', 'o' })
 
       assert_equal(Negamax.analysis(board, 1), 0)
+    end)
+
+    it("analyzes a won game", function()
+      local board = Board.create({ 'x', 'o', nil,
+                                   'x', 'o', nil,
+                                   'x', nil, nil })
+
+      assert_equal(Negamax.analysis(board, 1, -1), math.pow(2, -1))
+    end)
+  end)
+
+  context("run", function()
+    it("weights the odd cells as equally optimal on an empty board", function()
+      local board = Board.create()
+
+      assert_have_optimal_moves_of(Negamax.run(board), {1, 3, 5, 7, 9})
+    end)
+    
+    it("picks a fork", function()
+      local board = Board.create({ 'x', nil, 'o' })
+
+      assert_have_optimal_moves_of(Negamax.run(board), {4, 7, 9})
+    end)
+
+    it("picks a win over a block", function()
+      local board = Board.create({ 'x', 'x', 'o',
+                                   'x', 'x', 'o',
+                                   'o', nil, nil })
+
+      assert_have_optimal_move_of(Negamax.run(board), 9)
+    end)
+
+    it("picks immediate win", function()
+      local board = Board.create({ 'x', nil, 'x',
+                                   nil, nil, nil,
+                                   'o', nil, 'o' })
+
+      assert_have_optimal_move_of(Negamax.run(board), 2)
+    end)
+
+    it("blocks immediate win when playing as 'o'", function()
+      local board = Board.create({ 'x', nil, 'x',
+                                   nil, nil, nil,
+                                   'o', nil, nil })
+
+      assert_have_optimal_move_of(Negamax.run(board), 2)
+    end)
+
+    it("picks a block of opposing player", function()
+      local board = Board.create({ 'x', nil, 'o',
+                                   nil, 'x', nil,
+                                   nil, nil, nil })
+      assert_have_optimal_move_of(Negamax.run(board), 9)
+
+      board = Board.create({ 'x', nil, 'x',
+                             nil, nil, nil,
+                             nil, nil, 'o' })
+      assert_have_optimal_move_of(Negamax.run(board), 2)
+      
+      board = Board.create({ 'x', nil, 'o',
+                             nil, nil, nil,
+                             'x', nil, nil })
+      assert_have_optimal_move_of(Negamax.run(board), 4)
     end)
   end)
 
