@@ -2,6 +2,7 @@ require "lib/console"
 require "lib/output"
 require "lib/input"
 require "lib/board"
+require "lib/player_next_empty"
 
 describe("Console", function()
   local output_buffer, input_buffer, output, input, board
@@ -29,7 +30,7 @@ describe("Console", function()
       table.insert(input_buffer, 9)       -- cell 9 and we win
       table.insert(input_buffer, 'n')     -- don't play again
 
-      console:game()
+      console:game(PlayerNextEmpty.create())
 
       assert_equal(console.winner, 'x')
     end)

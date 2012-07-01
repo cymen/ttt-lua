@@ -2,7 +2,7 @@ require "lib/output"
 require "lib/input"
 require "lib/prompter"
 require "lib/player_human"
-require "lib/player_next_empty"
+require "lib/player_computer"
 require "lib/game_loop"
 
 Console = {}
@@ -27,13 +27,15 @@ function Console:greeting()
   self.output:write_line_centered("Tic-Tac-Toe")
 end
 
-function Console:game()
-  local human_is, human, computer, board, loop
+function Console:game(computer)
+  local human_is, human, board, loop
   while true do
     human_is = self.prompter:x_or_o()
     
     human = PlayerHuman.create(self.output, self.input)
-    computer = PlayerNextEmpty.create()
+    if computer == nil then
+      computer = PlayerComputer.create()
+    end
     board = Board.create()
 
     if human_is == 'x' then
