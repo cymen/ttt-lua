@@ -1,6 +1,6 @@
 require "lib/console"
-require "lib/output"
-require "lib/input"
+require "lib/io/output"
+require "lib/io/input"
 require "lib/board"
 require "lib/player_next_empty"
 

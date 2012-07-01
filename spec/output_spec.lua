@@ -1,4 +1,4 @@
-require "lib/output"
+require "lib/io/output"
 
 describe("Output", function()
   local buffer, output

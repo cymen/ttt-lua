@@ -1,6 +1,6 @@
 require "lib/prompter"
-require "lib/output"
-require "lib/input"
+require "lib/io/output"
+require "lib/io/input"
 
 describe("Prompter", function()
 

@@ -1,6 +1,6 @@
 require "lib/player_human"
-require "lib/output"
-require "lib/input"
+require "lib/io/output"
+require "lib/io/input"
 require "lib/board"
 
 describe("PlayerHuman", function()

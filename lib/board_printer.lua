@@ -1,5 +1,5 @@
 require "lib/board"
-require "lib/output"
+require "lib/io/output"
 
 BoardPrinter = {}
 BoardPrinter.__index = BoardPrinter

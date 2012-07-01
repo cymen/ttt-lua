@@ -1,5 +1,5 @@
-require "lib/output"
-require "lib/input"
+require "lib/io/output"
+require "lib/io/input"
 require "lib/prompter"
 require "lib/player_human"
 require "lib/player_computer"

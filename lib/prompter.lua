@@ -1,5 +1,5 @@
-require "lib/output"
-require "lib/input"
+require "lib/io/output"
+require "lib/io/input"
 
 Prompter = {}
 Prompter.__index = Prompter

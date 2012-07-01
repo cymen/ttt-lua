@@ -1,6 +1,6 @@
 require "lib/board_printer"
 require "lib/board"
-require "lib/output"
+require "lib/io/output"
 
 describe("BoardPrinter", function()
 

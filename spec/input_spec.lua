@@ -1,4 +1,4 @@
-require "lib/input"
+require "lib/io/input"
 
 describe("Input", function()
   local buffer, input
