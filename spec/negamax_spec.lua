@@ -1,7 +1,6 @@
 require "lib/board"
 require "spec/spec_helper"
 
-local TableUtil = require "lib/table_util"
 local Negamax = require "/lib/negamax"
 
 describe("Negamax", function()
