@@ -1,4 +1,4 @@
-require "lib/negamax"
+local Negamax = require "lib/negamax"
 
 PlayerComputer = {}
 PlayerComputer.__index = PlayerComputer
@@ -17,8 +17,7 @@ function PlayerComputer:play(board)
   if board:is_empty() then
     best_choices = self.optimal
   else
-    local negamax = Negamax.create()
-    local choices = negamax:run(board)
+    local choices = Negamax.run(board)
     best_choices = self:best_choices(choices)
   end
 

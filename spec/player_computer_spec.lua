@@ -1,5 +1,6 @@
 require "lib/player_computer"
 require "lib/board"
+require "lib/player_next_empty"
 
 describe("PlayerComputer", function()
   local pc
@@ -15,10 +16,22 @@ describe("PlayerComputer", function()
   end)
 
   context("play", function()
-    it("choose a cell number on an empty board", function()
-      local board = Board.create()
-      
+    local board = Board.create()
+
+    it("chooses a cell number on an empty board", function()
       local result = pc:play(board)
+
+      assert_greater_than(result, 0)
+      assert_less_than(result, 10)
+    end)
+
+    it("uses Negamax to choose another cell number", function()
+      local pne = PlayerNextEmpty.create()
+      local other_side_played = pne:play(board)
+      board:set(other_side_played, 'o')
+
+      local result = pc:play(board)
+      
       assert_greater_than(result, 0)
       assert_less_than(result, 10)
     end)
