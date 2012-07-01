@@ -1,21 +1,13 @@
 require "lib/board"
 require "lib/row"
 
-Scorer = {}
-Scorer.__index = Scorer
+local Scorer = {}
 
-function Scorer.create(board)
-  local scorer = {}
-  setmetatable(scorer, Scorer)
-  scorer.board = board
-  return scorer
-end
-
-function Scorer:turn()
+function Scorer.turn(board)
   local x_count = 0
   local o_count = 0
 
-  for _, value in pairs(self.board.cells) do
+  for _, value in pairs(board.cells) do
     if value == 'x' then
       x_count = x_count + 1
     elseif value == 'o' then
@@ -30,12 +22,12 @@ function Scorer:turn()
   end
 end
 
-function Scorer:is_tie()
-  return self.board:empty_count() == 0
+function Scorer.is_tie(board)
+  return board:empty_count() == 0
 end
 
-function Scorer:winner()
-  for key, row in pairs(self.board:rows()) do
+function Scorer.winner(board)
+  for key, row in pairs(board:rows()) do
     if row:identical_values_and_not_nil() then
       return row[1]
     end
@@ -44,8 +36,8 @@ function Scorer:winner()
   return nil
 end
 
-function Scorer:is_won()
-  local winner = self:winner()
+function Scorer.is_won(board)
+  local winner = Scorer.winner(board)
   if winner ~= nil then
     return true
   else
@@ -53,6 +45,8 @@ function Scorer:is_won()
   end
 end
 
-function Scorer:is_over()
-  return self:is_tie() or self:is_won()
+function Scorer.is_over(board)
+  return Scorer.is_tie(board) or Scorer.is_won(board)
 end
+
+return Scorer
