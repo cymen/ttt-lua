@@ -55,7 +55,7 @@ end
 
 function PlayerComputer:prepare_random_value_generator()
   math.randomseed(os.time())
-  for i=1,20 do
+  for i=1,math.random(42) do
     math.random()
   end
 end

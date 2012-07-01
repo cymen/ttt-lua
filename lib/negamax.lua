@@ -20,10 +20,6 @@ function Negamax:run(board)
     board:clear(cell_number)
   end
 
-  for key, value in pairs(weighted_choices) do
-    io.write(key .. " -> " .. value .. "\n")
-  end
-
   return weighted_choices
 end
 
