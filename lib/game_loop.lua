@@ -1,4 +1,4 @@
-require "lib/scorer"
+local Scorer = require "/lib/scorer"
 
 GameLoop = {}
 GameLoop.__index = GameLoop
@@ -6,7 +6,6 @@ GameLoop.__index = GameLoop
 function GameLoop.create(board, player_x, player_o)
   local loop = {}
   setmetatable(loop, GameLoop)
-  loop.scorer = Scorer.create(board)
   loop.board = board
   loop.player_x = player_x
   loop.player_o = player_o
@@ -14,8 +13,8 @@ function GameLoop.create(board, player_x, player_o)
 end
 
 function GameLoop:run()
-  while not self.scorer:is_over() do
-    if self.scorer:turn() == 'x' then
+  while not Scorer.is_over(self.board) do
+    if Scorer.turn(self.board) == 'x' then
       local choice = self.player_x:play(self.board)
       self.board:set(choice, 'x')
     else
@@ -23,5 +22,5 @@ function GameLoop:run()
       self.board:set(choice, 'o')
     end
   end
-  return self.scorer:winner()
+  return Scorer.winner(self.board)
 end
