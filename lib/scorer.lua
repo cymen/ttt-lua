@@ -1,5 +1,5 @@
 require "lib/board"
-require "lib/row"
+require "lib/board/row"
 
 local Scorer = {}
 

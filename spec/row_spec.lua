@@ -1,4 +1,4 @@
-require "lib/row"
+require "lib/board/row"
 
 describe("Row", function()
 

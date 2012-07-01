@@ -1,5 +1,5 @@
-require "lib/row"
-require "lib/rows"
+require "lib/board/row"
+require "lib/board/rows"
 require "lib/board"
 
 describe("Rows", function()

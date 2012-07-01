@@ -1,4 +1,4 @@
-require "lib/rows"
+require "lib/board/rows"
 
 Board = {}
 Board.__index = Board
