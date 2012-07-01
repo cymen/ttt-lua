@@ -1,4 +1,4 @@
-require "lib/board_printer"
+require "lib/board/board_printer"
 require "lib/board"
 require "lib/io/output"
 

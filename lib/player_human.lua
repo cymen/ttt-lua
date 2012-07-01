@@ -1,7 +1,7 @@
 require "lib/io/output"
 require "lib/io/input"
 require "lib/prompter"
-require "lib/board_printer"
+require "lib/board/board_printer"
 
 PlayerHuman = {}
 PlayerHuman.__index = PlayerHuman
