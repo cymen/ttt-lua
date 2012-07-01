@@ -28,6 +28,22 @@ telescope.make_assertion(
 )
 
 telescope.make_assertion(
+  "not_have_optimal_move_of",
+  function(message, ...)
+    local moves, optimal_move = ...
+    local _error = assertion_message_prefix
+    _error = _error .. "cell-number -> weighted value map to *not* have optimal move of "
+    _error = _error .. optimal_move .. ":\n\t" .. TableUtil.tostring(moves)
+    return _error
+  end,
+  function(moves, optimal_move)
+    local move
+    local max = TableUtil.max(moves)
+    return moves[optimal_move] ~= max
+  end
+)
+
+telescope.make_assertion(
   "have_optimal_moves_of",
   function(message, ...)
     local moves, optimal_moves = ...
@@ -52,7 +68,6 @@ telescope.make_assertion(
         table.insert(found_optimal_moves, cell_number)
       end
     end
-
     return TableUtil.equal(found_optimal_moves, optimal_moves)
   end
 )
