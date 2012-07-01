@@ -12,6 +12,7 @@ describe("Negamax", function()
         assert_true(Negamax.is_optimal(i))
       end
     end)
+
     it("even numbers are not optimal", function()
       for i = 2,8,2 do
         assert_false(Negamax.is_optimal(i))
@@ -24,14 +25,17 @@ describe("Negamax", function()
       assert_true(Negamax.compare_optimal(1, 4))
       assert_true(Negamax.compare_optimal(7, 2))
     end)
+
     it("compares an even number to an odd number", function()
       assert_false(Negamax.compare_optimal(8, 1))
       assert_false(Negamax.compare_optimal(4, 7))
     end)
+
     it("compares two odd numbers", function()
       assert_true(Negamax.compare_optimal(1, 3))
       assert_false(Negamax.compare_optimal(3, 1))
     end)
+
     it("compares two even numbers", function()
       assert_true(Negamax.compare_optimal(2, 4))
       assert_false(Negamax.compare_optimal(8, 4))
