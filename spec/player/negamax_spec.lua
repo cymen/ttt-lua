@@ -1,7 +1,7 @@
 require "lib/board"
 require "spec/spec_helper"
 
-local Negamax = require "/lib/negamax"
+local Negamax = require "/lib/player/negamax"
 
 describe("Negamax", function()
   

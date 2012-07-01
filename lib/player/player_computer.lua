@@ -1,4 +1,4 @@
-local Negamax = require "lib/negamax"
+local Negamax = require "lib/player/negamax"
 
 PlayerComputer = {}
 PlayerComputer.__index = PlayerComputer
