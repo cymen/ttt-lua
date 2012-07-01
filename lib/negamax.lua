@@ -15,7 +15,7 @@ function Negamax.run(board)
 end
 
 function Negamax.negamax(board, depth, alpha, beta, sign)
-  if depth > 8 then
+  if depth > (board.CELL_COUNT - 1) then
     return alpha
   end
 

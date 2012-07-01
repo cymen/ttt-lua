@@ -2,6 +2,7 @@ require "lib/rows"
 
 Board = {}
 Board.__index = Board
+Board.CELL_COUNT = 9
 
 function Board.create(cells)
   local board = {}
@@ -45,7 +46,7 @@ end
 function Board:empty_cell_numbers()
   local numbers = {}
 
-  for i = 1,9 do
+  for i = 1,self.CELL_COUNT do
     if self.cells[i] == nil then
       table.insert(numbers, i)
     end
@@ -59,9 +60,9 @@ function Board:empty_count()
 end
 
 function Board:used_count()
-  return 9 - self:empty_count()
+  return self.CELL_COUNT - self:empty_count()
 end
 
 function Board:is_empty()
-  return #(self:empty_cell_numbers()) == 9
+  return #(self:empty_cell_numbers()) == self.CELL_COUNT 
 end
