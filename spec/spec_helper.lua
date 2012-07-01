@@ -56,3 +56,18 @@ telescope.make_assertion(
     return TableUtil.equal(found_optimal_moves, optimal_moves)
   end
 )
+
+telescope.make_assertion(
+  "have_same_key_value_pairs",
+  function(message, ...)
+    local table1, table2 = ...
+    local _error = assertion_message_prefix
+    _error = _error .. "expected first table to match second table:"
+    _error = _error .. "\n\t" .. TableUtil.tostring(table1)
+    _error = _error .. "\n\t" .. TableUtil.tostring(table2)
+    return _error
+  end,
+  function(table1, table2)
+    return TableUtil.equal(table1, table2)
+  end
+)

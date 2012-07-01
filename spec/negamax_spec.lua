@@ -1,6 +1,7 @@
 require "lib/board"
 require "spec/spec_helper"
 
+local TableUtil = require "lib/table_util"
 local Negamax = require "/lib/negamax"
 
 describe("Negamax", function()
@@ -42,13 +43,7 @@ describe("Negamax", function()
       local choices = {1, 2, 3, 4, 5, 6, 7, 8, 9}
       Negamax.sort_choices_optimally(choices)
 
-      for i = 1,9 do
-        if i < 6 then
-          assert_true(choices[i] % 2 == 1)
-        else
-          assert_true(choices[i] % 2 == 0)
-        end
-      end
+      assert_have_same_key_value_pairs(choices, {1, 3, 5, 7, 9, 2, 4, 6, 8})
     end)
   end)
 
