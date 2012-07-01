@@ -1,3 +1,3 @@
 .PHONY:	spec
 spec:
-	@tsc -f spec/*.lua
+	@tsc -f spec/*.lua spec/*/*.lua
