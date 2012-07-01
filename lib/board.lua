@@ -7,7 +7,6 @@ Board.CELL_COUNT = 9
 function Board.create(cells)
   local board = {}
   setmetatable(board, Board)
-  board.cells = cells
   if cells == nil then
     cells = {}
   end
