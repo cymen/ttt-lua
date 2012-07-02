@@ -1,12 +1,13 @@
 Output = {}
 Output.__index = Output
+Output.DefaultWidth = 80
 
 function Output.create(buffer, width)
   local output = {}
   setmetatable(output, Output)
   output.buffer = buffer
   if width == nil then
-    width = 80
+    width = Output.DefaultWidth
   end
   output.width = width
   return output
@@ -22,7 +23,7 @@ end
 
 function Output:write_line_centered(value, width)
   if width == nil then
-    width = self.width
+    width = Output.DefaultWidth
   end
 
   if type(value) ~= 'string' then
