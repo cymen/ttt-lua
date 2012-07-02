@@ -1,4 +1,4 @@
-local TableUtil = require "lib/table_util"
+local TableUtil = require "lib/util/table_util"
 
 telescope.make_assertion(
   "have_optimal_move_of",

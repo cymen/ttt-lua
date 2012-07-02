@@ -1,13 +1,46 @@
 require "lib/board/board_printer"
 require "lib/board"
 require "lib/io/output"
+require "spec/spec_helper"
 
 describe("BoardPrinter", function()
+  local printer
+
+  before(function()
+    printer = BoardPrinter.create()
+  end)
 
   context("create", function()
     it("can be created", function()
-      local printer = BoardPrinter.create()
       assert_not_equal(printer, nil)
+    end)
+  end)
+
+  context("header_row", function()
+    it("makes a header row for the board", function()
+      assert_equal(printer:header_row({'x', 'o', 'x'}, 1), "1    |2    |3    ")
+      assert_equal(printer:header_row({'x', 'o', 'x'}, 4), "4    |5    |6    ")
+      assert_equal(printer:header_row({'x', 'o', 'x'}, 7), "7    |8    |9    ")
+    end)
+  end)
+
+  context("content_row", function()
+    it("makes a content row for the board", function()
+      assert_equal(printer:content_row({'x', 'o', 'x'}), "  x  |  o  |  x  ")
+      assert_equal(printer:content_row({'o', 'o', 'o'}), "  o  |  o  |  o  ")
+    end)
+  end)
+
+
+  context("footer_row", function()
+    it("makes a footer row for the board", function()
+      assert_equal(printer:footer_row({'o', 'o', 'o'}), "_____|_____|_____")
+    end)
+  end)
+
+  context("final_row", function()
+    it("makes the final row for the board", function()
+      assert_equal(printer:final_row({'o', 'o', 'o'}), "     |     |     ")
     end)
   end)
 
@@ -19,12 +52,18 @@ describe("BoardPrinter", function()
                                     'o','x','o',
                                     'x','o','x'  })
       local printer = BoardPrinter.create(output)
-      
+
       printer:print(board)
 
-      assert_equal(buffer[1], 'x, o, x\n')
-      assert_equal(buffer[2], 'o, x, o\n')
-      assert_equal(buffer[3], 'x, o, x\n')
+      assert_equal(buffer[1], "                               1    |2    |3    \n")
+      assert_equal(buffer[2], "                                 x  |  o  |  x  \n")
+      assert_equal(buffer[3], "                               _____|_____|_____\n")
+      assert_equal(buffer[4], "                               4    |5    |6    \n")
+      assert_equal(buffer[5], "                                 o  |  x  |  o  \n")
+      assert_equal(buffer[6], "                               _____|_____|_____\n")
+      assert_equal(buffer[7], "                               7    |8    |9    \n")
+      assert_equal(buffer[8], "                                 x  |  o  |  x  \n")
+      assert_equal(buffer[9], "                                    |     |     \n")
     end)
   end)
 
