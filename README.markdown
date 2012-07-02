@@ -10,6 +10,8 @@ Tests use [Telescope](https://github.com/norman/telescope) which can be installe
 
 Run `make` to run the tests.
 
+Note: If you would like to use Lua 5.2 be sure to use the version of Telescope in the git repo linked below as Lua 5.2 removes `getfenv` and `setfenv`. The version of Telescope in the master branch on github has a work around (the version of Telescope installed by luarocks does not).
+
 Assumptions
 ===========
 
