@@ -63,5 +63,5 @@ function Board:used_count()
 end
 
 function Board:is_empty()
-  return #(self:empty_cell_numbers()) == self.CELL_COUNT 
+  return self:empty_count() == self.CELL_COUNT 
 end
