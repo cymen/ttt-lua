@@ -19,10 +19,6 @@ describe("TableUtil", function()
       assert_false(TableUtil.equal({1}, {1, 2}))
       assert_false(TableUtil.equal({1, 2}, {1}))
     end)
-
-    it("cannot handle tables within tables", function()
-      assert_true(TableUtil.equal({{1}}, {{1}}))
-    end)
   end)
 
   context("max", function()
@@ -58,13 +54,6 @@ describe("TableUtil", function()
       
       assert_false(TableUtil.table1_within_table2({'a', 'b', 'c'}, {'a', 'b'}))
       assert_false(TableUtil.table1_within_table2({20, 40, 300}, {20, 40}))
-    end)
-
-    it("can compare tables within tables", function()
-      assert_true(TableUtil.table1_within_table2({{1}}, {{1}, 2}))
-      assert_true(TableUtil.table1_within_table2({{'a', 'b'}}, {{'a', 'b'}, 2}))
-
-      assert_false(TableUtil.table1_within_table2({{1}}, {{2}, 2}))
     end)
   end)
 

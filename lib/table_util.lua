@@ -21,13 +21,7 @@ end
 function TableUtil.table1_within_table2(table1, table2)
   for key, value in pairs(table1) do
     if table2[key] ~= table1[key] then
-      if type(table2[key]) == 'table' and type(table1[key]) == 'table' then
-        if not TableUtil.equal(table2[key], table1[key]) then
-          return false
-        end
-      else
-        return false
-      end
+      return false
     end
   end
 
