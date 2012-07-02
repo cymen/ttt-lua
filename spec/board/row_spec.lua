@@ -1,10 +1,11 @@
 require "lib/board/row"
+require "spec/spec_helper"
 
 describe("Row", function()
 
   context("create", function()
     it("can be created", function()
-      local row = Row.create({})
+      local row = Row.create()
 
       assert_not_equal(row, nil)
     end)
@@ -48,25 +49,30 @@ describe("Row", function()
     end)
   end)
 
-  context("tostring", function()
-    it("prints nicely as 'value_1, value_2, value_3'", function()
-      local row = Row.create({'x', 'o', 'x'})
-      
-      assert_equal(row:__tostring(), "x, o, x")
+  context("to_printable", function()
+    local row
+    it("converts an empty row to a row of three empty string", function()
+      row = Row.create()
+
+      assert_have_same_key_value_pairs(row:to_printable(), {"", "", ""})
     end)
 
-    context("handles nils", function()
-      it("prints implict nil as underscore", function()
-        local row = Row.create({'x', 'x'})
+    it("converts a row of nil to a row of empty string", function()
+      row = Row.create({nil, nil, nil})
 
-        assert_equal(row:__tostring(), 'x, x, _')
-      end)
+      assert_have_same_key_value_pairs(row:to_printable(), {"", "", ""})
+    end)
 
-      it("prints explicit nil as underscore", function()
-        local row = Row.create({nil, 'o', 'x'})
+    it("converts row of mixed nil and values to empty string and values", function()
+      row = Row.create({nil, 'x', nil})
 
-        assert_equal(row:__tostring(), '_, o, x')
-      end)
+      assert_have_same_key_value_pairs(row:to_printable(), {"", "x", ""})
+    end)
+
+    it("leaves a row of values alone", function()
+      row = Row.create({'o', 'x', 'o'})
+
+      assert_have_same_key_value_pairs(row:to_printable(), {"o", "x", "o"})
     end)
   end)
 
