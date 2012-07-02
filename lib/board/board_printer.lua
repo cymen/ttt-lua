@@ -77,6 +77,7 @@ function BoardPrinter:write(value)
 end
 
 function BoardPrinter:print(board)
+  self.output:write("\n")
   local rows = board:horizontal_rows()
   local row_count = #(rows)
   for number, row in pairs(rows) do
@@ -90,4 +91,5 @@ function BoardPrinter:print(board)
       self:write(self:final_row(row))
     end
   end
+  self.output:write("\n")
 end

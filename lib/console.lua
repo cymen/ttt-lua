@@ -24,7 +24,9 @@ function Console.create(output, input)
 end
 
 function Console:greeting()
+  self.output:write("\n")
   self.output:write_line_centered("Tic-Tac-Toe")
+  self.output:write("\n")
 end
 
 function Console:game(computer)
