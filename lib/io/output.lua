@@ -25,6 +25,10 @@ function Output:write_line_centered(value, width)
     width = self.width
   end
 
+  if type(value) ~= 'string' then
+    value = tostring(value)
+  end
+
   local length, padding
   length = #(value)
   padding = (width - length) / 2

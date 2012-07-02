@@ -40,6 +40,12 @@ describe("Output", function()
       
       assert_equal(buffer[1], "  abc\n")
     end)
+
+    it("can handle numbers", function()
+      output:write_line_centered(42, 8)
+      
+      assert_equal(buffer[1], "   42\n")
+    end)
   end)
 
 end)
