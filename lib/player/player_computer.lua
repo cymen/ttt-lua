@@ -2,11 +2,11 @@ local Negamax = require "lib/player/negamax"
 
 PlayerComputer = {}
 PlayerComputer.__index = PlayerComputer
+PlayerComputer.OPTIMAL = {1, 3, 5, 7, 9}
 
 function PlayerComputer:create()
   local pc = {}
   setmetatable(pc, PlayerComputer)
-  pc.optimal = {1, 3, 5, 7, 9}
   pc:prepare_random_value_generator()
   return pc
 end
@@ -15,7 +15,7 @@ function PlayerComputer:play(board)
   local best_choices
 
   if board:is_empty() then
-    best_choices = self.optimal
+    best_choices = self.OPTIMAL
   else
     local choices = Negamax.run(board)
     best_choices = self:best_choices(choices)
