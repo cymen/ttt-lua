@@ -1,5 +1,6 @@
 require "lib/board"
 require "lib/board/row"
+require "spec/spec_helper"
 
 describe("Board", function()
 
@@ -90,6 +91,16 @@ describe("Board", function()
       assert_equal(rows[2], Row.create({'o', nil, nil}))
       assert_equal(rows[3], Row.create({nil, nil, 'x'}))
     end)
+
+    it("returns empty rows on an empty board", function()
+      local board = Board.create()
+      local rows = board:horizontal_rows()
+
+      assert_equal(#(rows), 3)
+      assert_equal(rows[1], Row.create({nil, nil, nil}))
+      assert_equal(rows[2], Row.create({nil, nil, nil}))
+      assert_equal(rows[3], Row.create({nil, nil, nil}))
+    end)
   end)
 
 
@@ -104,9 +115,7 @@ describe("Board", function()
       local board = Board.create({'x'})
 
       assert_equal(#(board:empty_cell_numbers()), 8)
-      for _, number in pairs(board:empty_cell_numbers()) do
-        assert_not_equal(number, 1)
-      end
+      assert_have_same_key_value_pairs(board:empty_cell_numbers(), {2, 3, 4, 5, 6, 7, 8, 9})
     end)
   end)
 
