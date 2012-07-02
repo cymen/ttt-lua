@@ -24,13 +24,10 @@ describe("PlayerHuman", function()
     end)
 
 
-    it("it displays the board", function()
+    it("it prompts for input", function()
       table.insert(input_buffer, 1)
       player:play(board)
 
-      assert_equal(output_buffer[1], "_, _, _\n")
-      assert_equal(output_buffer[2], "_, _, _\n")
-      assert_equal(output_buffer[3], "_, _, _\n")
       assert_equal(output_buffer[#(output_buffer)], "Choose a space from 1, 2, 3, 4, 5, 6, 7, 8, 9: ")
     end)
   end)
