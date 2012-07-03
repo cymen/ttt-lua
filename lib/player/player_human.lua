@@ -1,7 +1,8 @@
 require "lib/io/output"
 require "lib/io/input"
 require "lib/prompter"
-require "lib/board/board_printer"
+
+local BoardView = require "lib/board/board_view"
 
 PlayerHuman = {}
 PlayerHuman.__index = PlayerHuman
@@ -18,11 +19,10 @@ function PlayerHuman.create(output, input)
   end
   player.input = input
   player.prompter = Prompter.create(output, input)
-  player.board_printer = BoardPrinter.create(output)
   return player
 end
 
 function PlayerHuman:play(board)
-  self.board_printer:print(board)
+  self.output:write(BoardView.render(board))
   return self.prompter:int_in_list(board:empty_cell_numbers())
 end
