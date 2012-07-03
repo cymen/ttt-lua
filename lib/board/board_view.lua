@@ -1,6 +1,3 @@
-require "lib/board"
-require "lib/io/output"
-
 local StringUtil = require("lib/util/string_util")
 local TableUtil = require("lib/util/table_util")
 
