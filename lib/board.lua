@@ -56,16 +56,12 @@ function Board:empty_cell_numbers()
   return numbers
 end
 
-function Board:empty_count()
-  return #(self:empty_cell_numbers())
-end
-
-function Board:used_count()
-  return self.CELL_COUNT - self:empty_count()
+function Board:is_full()
+  return #(self:empty_cell_numbers()) == 0
 end
 
 function Board:is_empty()
-  return self:empty_count() == self.CELL_COUNT 
+  return #(self:empty_cell_numbers()) == 9
 end
 
 function Board:__tostring()

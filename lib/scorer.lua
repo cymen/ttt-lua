@@ -23,7 +23,7 @@ function Scorer.turn(board)
 end
 
 function Scorer.is_tie(board)
-  return board:empty_count() == 0
+  return board:is_full()
 end
 
 function Scorer.winner(board)

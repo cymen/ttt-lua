@@ -15,17 +15,20 @@ describe("Board", function()
       local board = Board.create()
 
       assert_not_equal(board.cells, nil)
-      assert_equal(board:empty_count(), 9)
+      assert_have_same_key_value_pairs(board.cells, {})
+      assert_have_same_key_value_pairs(board.cells, { nil, nil, nil,
+                                                      nil, nil, nil,
+                                                      nil, nil, nil })
     end)
 
     it("accepts board cells values", function()
       local board = Board.create({'x', 'o', 'x'})
 
       assert_not_equal(board.cells, nil)
-      assert_equal(board.cells[1], 'x')
-      assert_equal(board.cells[2], 'o')
-      assert_equal(board.cells[3], 'x')
-      assert_equal(board:empty_count(), 6)
+      assert_have_same_key_value_pairs(board.cells, { 'x', 'o', 'x' })
+      assert_have_same_key_value_pairs(board.cells, { 'x', 'o', 'x',
+                                                      nil, nil, nil,
+                                                      nil, nil, nil })
     end)
   end)
 
@@ -36,7 +39,6 @@ describe("Board", function()
       assert_equal(board:get(1), 'x')
       assert_equal(board:get(2), 'o')
       assert_equal(board:get(3), 'x')
-      assert_equal(board:empty_count(), 6)
     end)
   end)
 
@@ -45,11 +47,9 @@ describe("Board", function()
       local board = Board.create()
 
       assert_equal(board:get(1), nil)
-      assert_equal(board:empty_count(), 9)
 
       board:set(1, 'x')
       assert_equal(board:get(1), 'x')
-      assert_equal(board:empty_count(), 8)
     end)
 
     it("throws an error if attempt to set a cell that already has a value", function()
@@ -71,7 +71,6 @@ describe("Board", function()
     end)
   end)
 
-
   context("rows", function()
     it("returns the 8 rows", function()
       local board = Board.create()
@@ -79,7 +78,6 @@ describe("Board", function()
       assert_equal(#(board:rows()), 8)
     end)
   end)
-
 
   context("horizontal_rows", function()
     it("returns the horizontal rows", function()
@@ -103,7 +101,6 @@ describe("Board", function()
     end)
   end)
 
-
   context("empty_cell_numbers", function()
     it("returns all cell numbers on an empty board", function()
       local board = Board.create()
@@ -119,51 +116,27 @@ describe("Board", function()
     end)
   end)
 
-  context("empty_count", function()
-    it("sees all cells as empty on an unplayed board", function()
+  context("is_full", function()
+    it("returns false on an empty board", function()
       local board = Board.create()
 
-      assert_equal(board:empty_count(), 9)
+      assert_false(board:is_full())
     end)
  
-    it("sees cells empty as expected on partially-played board", function()
+    it("returns false on partially-played board", function()
       local board = Board.create({ 'o', nil, 'o',
                                    'x', nil, nil,
                                    'o', nil, 'o'})
 
-      assert_equal(board:empty_count(), 4)
+      assert_false(board:is_full())
     end)
 
-    it("sees no cells as empty on a fully-played board", function()
+    it("returns true on a fully-played board", function()
       local board = Board.create({ 'o', 'o', 'o',
                                    'x', 'x', 'x',
                                    'o', 'o', 'o'})
 
-      assert_equal(board:empty_count(), 0)
-    end)
-  end)
-
-  context("used_count", function()
-    it("sees no cells as used on an empty board", function()
-      local board = Board.create()
-
-      assert_equal(board:used_count(), 0)
-    end)
-    
-    it("sees cells used as expected on partially-played board", function()
-      local board = Board.create({ 'o', nil, 'o',
-                                   'x', nil, nil,
-                                   'o', nil, 'o'})
-
-      assert_equal(board:used_count(), 5)
-    end)
-
-    it("sees all cells as used on a fully-played board", function()
-      local board = Board.create({ 'o', 'o', 'o',
-                                   'x', 'x', 'x',
-                                   'o', 'o', 'o'})
-
-      assert_equal(board:used_count(), 9)
+      assert_true(board:is_full())
     end)
   end)
 
