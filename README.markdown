@@ -21,6 +21,8 @@ Assumptions
 Notes on Lua
 ============
 
+The Lua [style guide](http://lua-users.org/wiki/LuaStyleGuide) is a good overview of the language.
+
 Scope
 -----
 
@@ -32,6 +34,11 @@ Data structures
 The manual has this to say about tables:
 
 > The type table implements associative arrays, that is, arrays that can be indexed not only with numbers, but with any value (except nil). Tables can be heterogeneous; that is, they can contain values of all types (except nil). **Tables are the sole data structuring mechanism in Lua**; they can be used to represent ordinary arrays, symbol tables, sets, records, graphs, trees, etc. To represent records, Lua uses the field name as an index. The language supports this representation by providing a.name as syntactic sugar for a["name"]. There are several convenient ways to create tables in Lua.
+
+Note that nil values in tables do not behave the same as in Ruby:
+
+  `{ nil }` == `{}`
+  `{ nil, 1, nil }` == `{ nil, 1 }`
 
 Classes
 -------
@@ -50,3 +57,4 @@ Method names
 ------------
 
 It is not allowed to have `?` in a method name such as `play_again?`.
+
