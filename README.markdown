@@ -38,6 +38,7 @@ The manual has this to say about tables:
 Note that nil values in tables do not behave the same as in Ruby:
 
   `{ nil }` == `{}`
+
   `{ nil, 1, nil }` == `{ nil, 1 }`
 
 Classes
