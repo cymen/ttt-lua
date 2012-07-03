@@ -30,9 +30,9 @@ describe("Console", function()
       table.insert(input_buffer, 9)       -- cell 9 and we win
       table.insert(input_buffer, 'n')     -- don't play again
 
-      console:game(PlayerNextEmpty.create())
+      local winner = console:game(PlayerNextEmpty.create())
 
-      assert_equal(console.winner, 'x')
+      assert_equal(winner, 'x')
     end)
   end)
 

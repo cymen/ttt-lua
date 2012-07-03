@@ -30,7 +30,7 @@ function Console:greeting()
 end
 
 function Console:game(computer)
-  local human_is, human, board, loop
+  local human_is, human, board, loop, winner
   while true do
     human_is = self.prompter:x_or_o()
     
@@ -46,10 +46,10 @@ function Console:game(computer)
       loop = GameLoop.create(board, computer, human)
     end
 
-    self.winner = loop:run()
+    winner = loop:run()
 
     if self.prompter:play_again() == 'n' then
-      return
+      return winner
     end
   end
 end
