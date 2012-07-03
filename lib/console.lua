@@ -23,6 +23,11 @@ function Console.create(output, input)
   return console
 end
 
+function Console:run()
+  self:greeting()
+  self:game()
+end
+
 function Console:greeting()
   self.output:write("\n")
   self.output:write_line_centered("Tic-Tac-Toe")
@@ -48,13 +53,19 @@ function Console:game(computer)
 
     winner = loop:run()
 
+    self:over(board, winner)
+
     if self.prompter:play_again() == 'n' then
       return winner
     end
   end
 end
 
-function Console:run()
-  self:greeting()
-  self:game()
+function Console:over(board, winner)
+  self.output:write(board)
+  if winner ~= nil then
+    self.output:write_line_centered(winner .. " won!")
+  else
+    self.output:write_line_centered("Tied!")
+  end
 end
