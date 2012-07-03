@@ -68,7 +68,7 @@ describe("Prompter", function()
       table.insert(buffer_input, 'n')
 
       assert_equal(prompter:play_again(), 'n')
-      assert_equal(buffer_output[1], "Play again (y/n)? ")
+      assert_equal(buffer_output[1], "\nPlay again (y/n)? ")
     end)
 
     it("is case insensitive", function()

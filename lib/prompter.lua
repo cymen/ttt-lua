@@ -49,7 +49,7 @@ end
 
 function Prompter:play_again()
   while true do
-    self.output:write("Play again (y/n)? ")
+    self.output:write("\nPlay again (y/n)? ")
     answer = self.input:read_line()
     answer = answer:lower()
 
