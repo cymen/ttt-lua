@@ -1,5 +1,7 @@
 require "lib/board/rows"
 
+local BoardView = require "lib/board/board_view"
+
 Board = {}
 Board.__index = Board
 Board.CELL_COUNT = 9
@@ -64,4 +66,8 @@ end
 
 function Board:is_empty()
   return self:empty_count() == self.CELL_COUNT 
+end
+
+function Board:__tostring()
+  return BoardView.render(self)
 end

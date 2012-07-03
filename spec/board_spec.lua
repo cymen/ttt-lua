@@ -178,4 +178,18 @@ describe("Board", function()
     end)
   end)
 
+  context("__tostring", function()
+    local BoardView = require "lib/board/board_view"
+
+    it("can return a string representation of the board", function()
+      local board = Board.create({ 'o', 'o', 'o',
+                                   'x', 'x', 'x',
+                                   'o', 'o', 'o'})
+
+
+      assert_equal(type(tostring(board)), "string")
+      assert_equal(tostring(board), BoardView.render(board))
+    end)
+  end)
+
 end)
