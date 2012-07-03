@@ -5,8 +5,10 @@ function StringUtil.center(_string, width)
     _string = tostring(_string)
   end
 
-  local pad_left = string.rep(" ", math.floor((width - #(_string))/2))
-  local pad_right = string.rep(" ", math.ceil((width - #(_string))/2))
+  local padding = (width - #(_string)) / 2
+
+  local pad_left = string.rep(" ", math.floor(padding))
+  local pad_right = string.rep(" ", math.ceil(padding))
   
   return pad_left .. _string .. pad_right
 end
