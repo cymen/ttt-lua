@@ -21,7 +21,7 @@ Assumptions
 Notes on Lua
 ============
 
-The Lua [style guide](http://lua-users.org/wiki/LuaStyleGuide) is a good overview of the language.
+The [Lua Style Guide](http://lua-users.org/wiki/LuaStyleGuide) is a good overview of the language.
 
 Scope
 -----
@@ -45,6 +45,11 @@ Classes
 -------
 
 Lua does not have classes yet they can be added. I took the approach [described on the Lua wiki under Simple Lua Classes](http://lua-users.org/wiki/SimpleLuaClasses) using the simplest option that fulfilled the requirements. Calling class methods requires the use of `:` as in `classInstance:method_name()` which results in `self` working within the scope of `method_name()`. In short, a class is built upon a table.
+
+Modules
+-------
+
+As with classes, modules are not baked into Lua. The Lua Style Guide has a section on modules which is the approach used in this project.
 
 Operators
 ---------
