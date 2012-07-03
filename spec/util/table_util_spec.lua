@@ -77,6 +77,12 @@ describe("TableUtil", function()
     it("converts a table within a table", function()
       assert_equal(TableUtil.tostring({{10}}), "{ 1 -> { 1 -> 10 } }")
     end)
+
+    it("converts a function within a table to a string representation", function()
+      function f()
+      end
+      assert_equal(TableUtil.tostring({10, f}), "{ 1 -> 10, 2 -> " .. tostring(f) .." }") 
+    end)
   end)
 
 end)

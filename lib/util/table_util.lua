@@ -42,6 +42,8 @@ function TableUtil.tostring(_table)
       _string = _string .. "'" .. value .. "'"
     elseif type(value) == "table" then
       _string = _string .. TableUtil.tostring(value)
+    elseif type(value) == "function" then
+      _string = _string .. tostring(value)
     else
       _string = _string .. value
     end
