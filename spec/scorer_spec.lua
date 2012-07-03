@@ -20,6 +20,16 @@ describe("Scorer", function()
     end)
   end)
 
+  context("is_tie", function()
+    it("returns false if the game has been won", function()
+      local board = Board.create({ 'x', 'o', 'o',
+                                   'o', 'x', 'x',
+                                   'x', 'o', 'x'})
+
+      assert_false(Scorer.is_tie(board))
+    end)
+  end)
+
   context("incomplete unwon game", function()
     local board = Board.create({ 'x', 'o', 'x',
                                  'x', 'o', 'x',
