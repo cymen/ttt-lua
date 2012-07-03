@@ -3,7 +3,8 @@ require "lib/io/input"
 require "lib/prompter"
 require "lib/player/player_human"
 require "lib/player/player_computer"
-require "lib/game_loop"
+
+local GameLoop = require "lib/game_loop"
 
 Console = {}
 Console.__index = Console
@@ -46,12 +47,10 @@ function Console:game(computer)
     board = Board.create()
 
     if human_is == 'x' then
-      loop = GameLoop.create(board, human, computer)
+      winner = GameLoop.run(board, human, computer)
     else
-      loop = GameLoop.create(board, computer, human)
+      winner = GameLoop.run(board, computer, human)
     end
-
-    winner = loop:run()
 
     self:over(board, winner)
 

@@ -1,7 +1,7 @@
-require "lib/game_loop"
 require "lib/player/player_next_empty"
 
 describe("GameLoop", function()
+  local GameLoop = require "lib/game_loop"
   local board, player_x, player_o
 
   before(function()
@@ -10,30 +10,18 @@ describe("GameLoop", function()
     player_o = PlayerNextEmpty.create()
   end)
 
-  context("create", function()
-    it("can be created", function()
-      local loop = GameLoop.create(board, player_x, player_o)
-
-      assert_not_equal(loop, nil)
-    end)
-  end)
-
-
   context("run", function()
     it("x wins with two dumb players", function()
-      local loop = GameLoop.create(board, player_x, player_o)
-      local winner = loop:run()
+      local winner = GameLoop.run(board, player_x, player_o)
 
       assert_equal(winner, 'x')
     end)
 
     it("returns nil if game over and it is tied", function()
-      board = board:create({  'x', 'o', 'x',
+      board = Board.create({  'x', 'o', 'x',
                               'x', 'o', 'x',
                               'o', 'x', 'o' })
-      local loop = GameLoop.create(board, player_x, player_o)
-
-      local winer = loop:run()
+      local winner = GameLoop.run(board, player_x, player_o)
 
       assert_equal(winner, nil)
     end)
