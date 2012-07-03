@@ -2,6 +2,8 @@ Output = {}
 Output.__index = Output
 Output.DefaultWidth = 80
 
+local StringUtil = require "lib/util/string_util"
+
 function Output.create(buffer, width)
   local output = {}
   setmetatable(output, Output)
@@ -34,9 +36,5 @@ function Output:write_line_centered(value, width)
     value = tostring(value)
   end
 
-  local length, padding
-  length = #(value)
-  padding = (width - length) / 2
-
-  self:write(string.rep(" ", padding) .. value .. '\n')
+  self:write(StringUtil.center(value, width) .. "\n")
 end
