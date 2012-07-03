@@ -1,20 +1,9 @@
-require "lib/board/board_printer"
 require "lib/board"
 require "lib/io/output"
 require "spec/spec_helper"
 
 describe("BoardPrinter", function()
-  local printer
-
-  before(function()
-    printer = BoardPrinter.create()
-  end)
-
-  context("create", function()
-    it("can be created", function()
-      assert_not_equal(printer, nil)
-    end)
-  end)
+  local printer = require "lib/board/board_printer"
 
   context("header_row", function()
     it("makes a header row for the board", function()
@@ -51,9 +40,8 @@ describe("BoardPrinter", function()
       local board = Board.create({  'x','o','x',
                                     'o','x','o',
                                     'x','o','x'  })
-      local printer = BoardPrinter.create(output)
 
-      printer:print(board)
+      printer:print(board, output)
 
       assert_equal(buffer[1],  "\n")
       assert_equal(buffer[2],  "                               1    |2    |3    \n")

@@ -4,20 +4,9 @@ require "lib/io/output"
 local StringUtil = require("lib/util/string_util")
 
 BoardPrinter = {}
-BoardPrinter.__index = BoardPrinter
 BoardPrinter.Cell_Width = 5
 BoardPrinter.HorizontalSeperator = "|"
 BoardPrinter.VerticalSeperator = "_"
-
-function BoardPrinter.create(output)
-  local printer = {}
-  setmetatable(printer, BoardPrinter)
-  if output == nil then
-    output = Output.create()
-  end
-  printer.output = output
-  return printer
-end
 
 function BoardPrinter:header_row(row, start)
   local _string = ""
@@ -72,24 +61,29 @@ function BoardPrinter:final_row(row)
   return _string
 end
 
-function BoardPrinter:write(value)
-  self.output:write_line_centered(value)
-end
+function BoardPrinter:print(board, output)
+  if output == nil then
+    output = Output.create()
+  end
+  
+  output:write("\n")
 
-function BoardPrinter:print(board)
-  self.output:write("\n")
   local rows = board:horizontal_rows()
   local row_count = #(rows)
+
   for number, row in pairs(rows) do
     row = row:to_printable()
     local start = (number * #(row)) + 1 - #(row)
-    self:write(self:header_row(row, start))
-    self:write(self:content_row(row))
+    output:write_line_centered(self:header_row(row, start))
+    output:write_line_centered(self:content_row(row))
     if number ~= #(row) then
-      self:write(self:footer_row(row))
+      output:write_line_centered(self:footer_row(row))
     else
-      self:write(self:final_row(row))
+      output:write_line_centered(self:final_row(row))
     end
   end
-  self.output:write("\n")
+
+  output:write("\n")
 end
+
+return BoardPrinter
