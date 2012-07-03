@@ -2,6 +2,8 @@ Row = {}
 Row.__index = Row
 Row.SIDE_LENGTH = 3
 
+local TableUtil = require "lib/util/table_util"
+
 function Row.create(contents)
   if contents == nil then
     contents = {}
@@ -41,10 +43,5 @@ function Row:to_printable()
 end
 
 function Row:__eq(other)
-  for key, value in pairs(self) do
-    if other[key] ~= value
-      then return false
-    end
-  end
-  return true
+  return TableUtil.equal(self, other)
 end
