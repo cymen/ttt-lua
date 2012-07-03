@@ -14,6 +14,10 @@ function Output.create(buffer, width)
 end
 
 function Output:write(value)
+  if type(value) ~= 'string' then
+    value = tostring(value)
+  end
+
   if self.buffer ~= nil then
     table.insert(self.buffer, value)
   else

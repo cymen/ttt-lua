@@ -14,6 +14,12 @@ describe("Output", function()
 
       assert_equal(buffer[1], "Would you like to be x or o (x always goes first)? ")
     end)
+
+    it("converts non-strings to strings for output", function()
+      output:write(100)
+
+      assert_equal(buffer[1], "100")
+    end)
   end)
 
   context("write_line_centered", function()
