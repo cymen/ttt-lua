@@ -1,7 +1,7 @@
 local StringUtil = require("lib/util/string_util")
 local TableUtil = require("lib/util/table_util")
 
-BoardView = {}
+local BoardView = {}
 BoardView.Width = 80
 BoardView.Cell_Width = 5
 BoardView.HorizontalSeperator = "|"
