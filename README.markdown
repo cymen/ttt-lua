@@ -3,8 +3,10 @@ Tic-tac-toe in Lua
 
 This is an implementation of the tic-tac-toe game in [Lua](http://www.lua.org/).
 
-Install for OS X
-----------------
+Install for OS X Lion
+---------------------
+Brian got everything working under Lion, with osx-gcc-installer already setup, with the following commands:
+
 
 `brew install lua` (installs Lua 5.1)
 
