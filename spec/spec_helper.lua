@@ -1,3 +1,4 @@
+local telescope = require "telescope"
 local TableUtil = require "lib/util/table_util"
 
 telescope.make_assertion(
