@@ -7,7 +7,9 @@ Install for OS X
 ----------------
 
 `brew install lua` (installs Lua 5.1)
+
 `brew install luarocks --use-gcc` (build fails with LLVM)
+
 `luarocks install telescope`
 
 Testing
