@@ -3,6 +3,13 @@ Tic-tac-toe in Lua
 
 This is an implementation of the tic-tac-toe game in [Lua](http://www.lua.org/).
 
+Install for OS X
+----------------
+
+`brew install lua` (installs Lua 5.1)
+`brew install luarocks --use-gcc` (build fails with LLVM)
+`luarocks install telescope`
+
 Testing
 -------
 
